@@ -71,36 +71,65 @@ const currencies = new Map([
   ['GBP', 'Pound sterling'],
 ]);
 
+currencies.forEach((elem, i, map) => {
+  console.log(`${elem}: ${i}`);
+});
+
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+// Set
+
+const currenciesUnique = new Set(['USD', 'GBP', 'USD', 'EUR', 'EUR']);
+
+currenciesUnique.forEach((elem, _, map) => {
+  console.log(`${elem}: ${elem}`);
+});
+
+// for (const [i, movement] of movements.entries()) {
+//   if (movement > 0) {
+//     console.log(` Movement ${i + 1}: You deposited ${movement}`);
+//   } else console.log(`Movement ${i + 1}: You withdrew ${Math.abs(movement)}`);
+// }
+
+// console.log(`--------forEach Method--------`);
+// movements.forEach((movement, i, arr) => {
+//   if (movement > 0) {
+//     console.log(`Movement ${i + 1}: You deposited ${movement}`);
+//   } else console.log(`Movement ${i + 1}: You withdrew ${Math.abs(movement)}`);
+// });
 
 /////////////////////////////////////////////////
 
-let arr = ['a', 'b', 'c', 'd', 'e'];
+// let arr = ['a', 'b', 'c', 'd', 'e'];
 
-// Slice
-console.log(arr.slice(2));
-console.log(arr.slice(1, -2));
+// // Slice
+// console.log(arr.slice(2));
+// console.log(arr.slice(1, -2));
 
-// Splice
+// // Splice
 
-console.log(arr.splice(2));
-console.log(arr.splice(-1));
-console.log(arr);
-console.log(arr.splice(1, 3));
-console.log(arr);
+// console.log(arr.splice(2));
+// console.log(arr.splice(-1));
+// console.log(arr);
+// console.log(arr.splice(1, 3));
+// console.log(arr);
 
-// Reverse
+// // Reverse
 
-arr = ['a', 'b', 'c', 'd', 'e'];
-const arr2 = ['f', 'g', 'h', 'i', 'j'];
-console.log(arr2);
-// const arr3 = arr2.reverse();
+// arr = ['a', 'b', 'c', 'd', 'e'];
+// const arr2 = ['f', 'g', 'h', 'i', 'j'];
+// console.log(arr2);
+// // const arr3 = arr2.reverse();
 
-// Concat
+// // Concat
 
-const letters = arr.concat(arr2);
-console.log(letters);
+// const letters = arr.concat(arr2);
+// console.log(letters);
 
-// Join
+// // Join
 
-console.log(letters.join(' - '));
+// console.log(letters.join(' - '));
+
+// const arr = [23, 11, 63];
+
+// console.log(arr.at(-1));
