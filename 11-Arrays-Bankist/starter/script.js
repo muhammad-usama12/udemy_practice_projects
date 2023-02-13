@@ -149,3 +149,36 @@ displayMovements(account1.movements);
 // const arr = [23, 11, 63];
 
 // console.log(arr.at(-1));
+
+// Code Challenge #1
+
+const juliaArr = [3, 5, 2, 12, 7];
+const kateArr = [4, 1, 15, 8, 3];
+
+const data1 = [9, 16, 6, 8, 3];
+const data2 = [10, 5, 6, 1, 4];
+
+const checkDogs = (arr1, arr2) => {
+  const juliaNew = [...arr1].splice(1, 2);
+  const kateNew = [...arr2].splice(1, 2);
+
+  juliaNew.forEach((elem, i) => {
+    const type =
+      elem > 0 && elem < 5
+        ? 'and is still a puppy 🐶'
+        : 'and is an adult but still a good boy 🐶';
+    console.log(`Dog #${i + 1} is ${elem} years old, ${type}.`);
+  });
+  kateNew.forEach((elem, i) => {
+    const type =
+      elem > 0 && elem < 5
+        ? 'and is still a puppy 🐶'
+        : 'and is an adult but still a good boy 🐶';
+    console.log(`Dog #${i + 1} is ${elem} years old, ${type}`);
+  });
+  console.log(juliaNew, kateNew);
+  return;
+};
+
+checkDogs(juliaArr, kateArr);
+checkDogs(data1, data2);
