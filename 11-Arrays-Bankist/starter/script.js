@@ -91,7 +91,7 @@ displayMovements(account1.movements);
 //   console.log(`${elem}: ${i}`);
 // });
 
-// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 // // Set
 
@@ -152,33 +152,56 @@ displayMovements(account1.movements);
 
 // Code Challenge #1
 
-const juliaArr = [3, 5, 2, 12, 7];
-const kateArr = [4, 1, 15, 8, 3];
+// const juliaArr = [3, 5, 2, 12, 7];
+// const kateArr = [4, 1, 15, 8, 3];
 
-const data1 = [9, 16, 6, 8, 3];
-const data2 = [10, 5, 6, 1, 4];
+// const data1 = [9, 16, 6, 8, 3];
+// const data2 = [10, 5, 6, 1, 4];
 
-const checkDogs = (arr1, arr2) => {
-  const juliaNew = [...arr1].splice(1, 2);
-  const kateNew = [...arr2].splice(1, 2);
+// const checkDogs = (arr1, arr2) => {
+//   const juliaNew = [...arr1].splice(1, 2);
+//   const kateNew = [...arr2].splice(1, 2);
 
-  juliaNew.forEach((elem, i) => {
-    const type =
-      elem > 0 && elem < 5
-        ? 'and is still a puppy 🐶'
-        : 'and is an adult but still a good boy 🐶';
-    console.log(`Dog #${i + 1} is ${elem} years old, ${type}.`);
-  });
-  kateNew.forEach((elem, i) => {
-    const type =
-      elem > 0 && elem < 5
-        ? 'and is still a puppy 🐶'
-        : 'and is an adult but still a good boy 🐶';
-    console.log(`Dog #${i + 1} is ${elem} years old, ${type}`);
-  });
-  console.log(juliaNew, kateNew);
-  return;
-};
+//   juliaNew.forEach((elem, i) => {
+//     const type =
+//       elem > 0 && elem < 5
+//         ? 'and is still a puppy 🐶'
+//         : 'and is an adult but still a good boy 🐶';
+//     console.log(`Dog #${i + 1} is ${elem} years old, ${type}.`);
+//   });
+//   kateNew.forEach((elem, i) => {
+//     const type =
+//       elem > 0 && elem < 5
+//         ? 'and is still a puppy 🐶'
+//         : 'and is an adult but still a good boy 🐶';
+//     console.log(`Dog #${i + 1} is ${elem} years old, ${type}`);
+//   });
+//   console.log(juliaNew, kateNew);
+//   return;
+// };
 
-checkDogs(juliaArr, kateArr);
-checkDogs(data1, data2);
+// checkDogs(juliaArr, kateArr);
+// checkDogs(data1, data2);
+
+const eurtoUsd = 1.1;
+
+const usdConversion = movements.map(mov => mov * eurtoUsd);
+
+console.log(movements);
+console.log(usdConversion);
+
+const movementsUSD = [];
+for (const mov of movements) {
+  movementsUSD.push(mov * eurtoUsd);
+}
+console.log(movementsUSD);
+
+const movDesc = movements.map((mov, i) => {
+  const type =
+    mov > 0
+      ? `Movement ${i + 1}: You deposited ${mov}`
+      : `Movement ${i + 1}: You withdrew ${Math.abs(mov)}`;
+  return type;
+});
+
+console.log(movDesc.toString().split(',').join('\n'));
