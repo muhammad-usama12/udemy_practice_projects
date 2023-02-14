@@ -239,6 +239,29 @@ const min = movements.reduce((acc, elem) => {
 
 // console.log(arr.at(-1));
 
+// const eurtoUsd = 1.1;
+
+// const usdConversion = movements.map(mov => mov * eurtoUsd);
+
+// console.log(movements);
+// console.log(usdConversion);
+
+// const movementsUSD = [];
+// for (const mov of movements) {
+//   movementsUSD.push(mov * eurtoUsd);
+// }
+// console.log(movementsUSD);
+
+// const movDesc = movements.map((mov, i) => {
+//   const type =
+//     mov > 0
+//       ? `Movement ${i + 1}: You deposited ${mov}`
+//       : `Movement ${i + 1}: You withdrew ${Math.abs(mov)}`;
+//   return type;
+// });
+
+// console.log(movDesc.toString().split(',').join('\n'));
+
 // Code Challenge #1
 
 // const juliaArr = [3, 5, 2, 12, 7];
@@ -272,25 +295,36 @@ const min = movements.reduce((acc, elem) => {
 // checkDogs(juliaArr, kateArr);
 // checkDogs(data1, data2);
 
-// const eurtoUsd = 1.1;
+// Coding Challenge #2
 
-// const usdConversion = movements.map(mov => mov * eurtoUsd);
+const calcAverageHumanAge = arr => {
+  let result = 0;
+  let filteredAge = [];
+  const humanAge = arr
+    .map(x => (x <= 2 ? (result = 2 * x) : (result = x * 4 + 16)))
+    .filter(x => (x > 18 ? filteredAge.push(x) : ''));
 
-// console.log(movements);
-// console.log(usdConversion);
+  filteredAge = filteredAge.reduce((v, x, y, z) => {
+    return v + x / z.length;
+  }, 0);
+  //dog <= 2, humanAge = 2 * dogAge
+  // dog > 2, humanAge = 16 + dogAge * 4
+  return filteredAge;
+};
 
-// const movementsUSD = [];
-// for (const mov of movements) {
-//   movementsUSD.push(mov * eurtoUsd);
+console.log(calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]));
+console.log(calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]));
+
+// const test = [36, 32, 76, 48, 28].reduce((x, y, z = null, b) => {
+//   // console.log(x, y, b.length);
+//   return x + y / b.length;
+// }, 0);
+// console.log(test);
+
+// const arr = [36, 32, 76, 48, 28];
+
+// let sum = 0;
+// for (let x of arr) {
+//   sum += x / arr.length;
 // }
-// console.log(movementsUSD);
-
-// const movDesc = movements.map((mov, i) => {
-//   const type =
-//     mov > 0
-//       ? `Movement ${i + 1}: You deposited ${mov}`
-//       : `Movement ${i + 1}: You withdrew ${Math.abs(mov)}`;
-//   return type;
-// });
-
-// console.log(movDesc.toString().split(',').join('\n'));
+// console.log(sum);
