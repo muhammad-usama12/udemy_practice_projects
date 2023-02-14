@@ -88,8 +88,8 @@ const createUsername = accounts => {
   );
 };
 
-console.log(createUsername(accounts));
-console.log(accounts);
+// console.log(createUsername(accounts));
+// console.log(accounts);
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -107,6 +107,12 @@ console.log(accounts);
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
+const deposits = movements.filter(mov => mov > 0);
+console.log(deposits.sort().reverse());
+
+const withdrawals = movements.filter(x => x < 0);
+
+console.log(withdrawals.sort());
 // // Set
 
 // const currenciesUnique = new Set(['USD', 'GBP', 'USD', 'EUR', 'EUR']);
