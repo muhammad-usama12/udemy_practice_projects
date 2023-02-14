@@ -77,6 +77,20 @@ const displayMovements = movements => {
 
 displayMovements(account1.movements);
 
+const createUsername = accounts => {
+  accounts.forEach(
+    accounts =>
+      (accounts.username = accounts.owner
+        .toLowerCase()
+        .split(' ')
+        .map(x => x[0])
+        .join(''))
+  );
+};
+
+console.log(createUsername(accounts));
+console.log(accounts);
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -183,25 +197,25 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 // checkDogs(juliaArr, kateArr);
 // checkDogs(data1, data2);
 
-const eurtoUsd = 1.1;
+// const eurtoUsd = 1.1;
 
-const usdConversion = movements.map(mov => mov * eurtoUsd);
+// const usdConversion = movements.map(mov => mov * eurtoUsd);
 
-console.log(movements);
-console.log(usdConversion);
+// console.log(movements);
+// console.log(usdConversion);
 
-const movementsUSD = [];
-for (const mov of movements) {
-  movementsUSD.push(mov * eurtoUsd);
-}
-console.log(movementsUSD);
+// const movementsUSD = [];
+// for (const mov of movements) {
+//   movementsUSD.push(mov * eurtoUsd);
+// }
+// console.log(movementsUSD);
 
-const movDesc = movements.map((mov, i) => {
-  const type =
-    mov > 0
-      ? `Movement ${i + 1}: You deposited ${mov}`
-      : `Movement ${i + 1}: You withdrew ${Math.abs(mov)}`;
-  return type;
-});
+// const movDesc = movements.map((mov, i) => {
+//   const type =
+//     mov > 0
+//       ? `Movement ${i + 1}: You deposited ${mov}`
+//       : `Movement ${i + 1}: You withdrew ${Math.abs(mov)}`;
+//   return type;
+// });
 
-console.log(movDesc.toString().split(',').join('\n'));
+// console.log(movDesc.toString().split(',').join('\n'));
