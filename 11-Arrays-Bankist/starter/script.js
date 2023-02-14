@@ -77,6 +77,15 @@ const displayMovements = movements => {
 
 displayMovements(account1.movements);
 
+const calcDisplayBalance = movements => {
+  const balance = movements.reduce((acc, elem) => {
+    return acc + elem;
+  }, 0);
+  // const html = `<p class="balance__value">${balance}€</p>`;
+  // labelBalance.innerHTML = html;
+  labelBalance.textContent = `${balance}€`;
+};
+
 const createUsername = accounts => {
   accounts.forEach(
     accounts =>
@@ -88,8 +97,7 @@ const createUsername = accounts => {
   );
 };
 
-// console.log(createUsername(accounts));
-// console.log(accounts);
+calcDisplayBalance(account1.movements);
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -107,12 +115,73 @@ const createUsername = accounts => {
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
-const deposits = movements.filter(mov => mov > 0);
-console.log(deposits.sort().reverse());
+// const deposits = movements.filter(mov => mov > 0);
+// console.log(deposits.sort().reverse());
 
-const withdrawals = movements.filter(x => x < 0);
+// const withdrawals = movements.filter(x => x < 0);
 
-console.log(withdrawals.sort());
+// console.log(withdrawals.sort());
+
+// accumulator (acc) collects all the elements in the array
+
+const balance = movements.reduce((acc, elem, i, arr) => {
+  // console.log(
+  //   `Iteration: ${
+  //     i + 1
+  //   } | Accumulate: ${acc} | Current Element: ${elem} | Sum after Accumulation ${
+  //     acc + elem
+  //   }`
+  // );
+  return acc + elem;
+}, 0);
+
+// console.log(balance);
+
+// let sum = 0;
+// for (const mov of movements) sum += mov;
+// console.log(sum);
+
+// Maximum Value
+
+const max = movements.reduce((acc, elem) => {
+  if (acc > elem) {
+    return acc;
+  } else return elem;
+}, movements[0]);
+
+// Minimum Value
+
+const min = movements.reduce((acc, elem) => {
+  if (acc < elem) {
+    return acc;
+  } else return elem;
+}, movements[0]);
+
+// console.log(min);
+
+// Max and Min through traditional looping
+
+// let max = 0;
+// console.log(max);
+// for (let i = 0; i < movements.length; i++) {
+//   if (movements[i] > max) {
+//     max = movements[i];
+
+//     // } else if (movements[i] < max) {
+//     // max = movements[i];
+//   }
+// }
+// let min = 0;
+// for (let i = 0; i < movements.length; i++) {
+//   if (movements[i] < min) {
+//     min = movements[i];
+
+//     // } else if (movements[i] < max) {
+//     // max = movements[i];
+//   }
+// }
+// console.log(min);
+
 // // Set
 
 // const currenciesUnique = new Set(['USD', 'GBP', 'USD', 'EUR', 'EUR']);
