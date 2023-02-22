@@ -136,11 +136,9 @@ btnLogin.addEventListener('click', event => {
     inputLoginPin.value = inputLoginUsername.value = '';
     inputLoginPin.blur();
     // Display UI & Welcome Message
-    console.log(
-      (labelWelcome.textContent = `Welcome Back, ${
-        currAccount.owner.split(' ')[0]
-      }`)
-    );
+    labelWelcome.textContent = `Welcome Back, ${
+      currAccount.owner.split(' ')[0]
+    }`;
     containerApp.style.opacity = 100;
     userInterface(currAccount);
   }
@@ -164,6 +162,23 @@ btnTransfer.addEventListener('click', e => {
     currAccount.movements.push(-amount);
     receiverAcc.movements.push(amount);
     userInterface(currAccount);
+  }
+});
+
+// Loan Request
+
+btnLoan.addEventListener('click', e => {
+  e.preventDefault();
+
+  const amount = Number(inputLoanAmount.value);
+
+  if (amount > 0 && currAccount.movements.some(mov => mov >= amount * 0.1)) {
+    // Add movement
+    currAccount.movements.push(amount);
+
+    // Update UI
+    userInterface(currAccount);
+    inputLoanAmount.value = '';
   }
 });
 
@@ -435,5 +450,3 @@ const eurtoUsd = 1.1;
 // // console.log(accounts);
 
 // const account = accounts.find(acc => acc.owner === 'Jessica Davis');
-
-// console.log(account);
