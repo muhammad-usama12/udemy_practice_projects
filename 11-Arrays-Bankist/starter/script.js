@@ -74,9 +74,6 @@ const displayMovements = movements => {
     containerMovements.insertAdjacentHTML('afterbegin', html);
   });
 };
-
-displayMovements(account1.movements);
-
 const calcDisplayBalance = movements => {
   const balance = movements.reduce((acc, elem) => {
     return acc + elem;
@@ -97,24 +94,23 @@ const createUsername = accounts => {
   );
 };
 
-calcDisplayBalance(account1.movements);
+createUsername(accounts);
 
-const calcDisplaySummary = movements => {
-  const income = movements
+const calcDisplaySummary = acc => {
+  const income = acc.movements
     .filter(mov => mov > 0)
     .reduce((acc, elem) => acc + elem, 0);
   labelSumIn.textContent = `${income}€`;
 
-  const out = movements
+  const out = acc.movements
     .filter(mov => mov < 0)
     .reduce((acc, elem) => acc + elem, 0);
   labelSumOut.textContent = `${out}€`;
 
-  const interest = movements
+  const interest = acc.movements
     .filter(mov => mov > 0)
-    .map(deposit => (deposit * 1.2) / 100)
-    .filter((int, i, arr) => {
-      console.log(int, i, arr);
+    .map(deposit => (deposit * acc.interestRate) / 100)
+    .filter(int => {
       return int >= 1;
     })
     .reduce((acc, elem) => acc + elem, 0);
@@ -122,7 +118,35 @@ const calcDisplaySummary = movements => {
   labelSumInterest.textContent = `${interest}€`;
 };
 
-console.log(calcDisplaySummary(account1.movements));
+// Event Handler
+let currAccount;
+
+btnLogin.addEventListener('click', event => {
+  //Prevent form from submitting
+  event.preventDefault();
+  currAccount = accounts.find(acc => acc.username === inputLoginUsername.value);
+  console.log(currAccount);
+  if (currAccount?.pin === Number(inputLoginPin.value)) {
+    inputLoginPin.value = inputLoginUsername.value = '';
+    inputLoginPin.blur();
+    // Display UI & Welcome Message
+    console.log(
+      (labelWelcome.textContent = `Welcome Back, ${
+        currAccount.owner.split(' ')[0]
+      }`)
+    );
+    containerApp.style.opacity = 100;
+
+    // Display movements
+
+    displayMovements(currAccount.movements);
+    // Display balance
+    calcDisplayBalance(currAccount.movements);
+    // Display message
+    console.log(calcDisplaySummary(currAccount));
+  }
+});
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -355,10 +379,18 @@ const eurtoUsd = 1.1;
 
 // Chaining Methods
 
-const totalDepositsUSD = movements
-  .filter(mov => mov > 0)
-  .map(mov => mov * eurtoUsd)
-  .reduce((acc, mov) => {
-    return acc + mov;
-  }, 0);
-// console.log(totalDepositsUSD);
+// const totalDepositsUSD = movements
+//   .filter(mov => mov > 0)
+//   .map(mov => mov * eurtoUsd)
+//   .reduce((acc, mov) => {
+//     return acc + mov;
+//   }, 0);
+// // console.log(totalDepositsUSD);
+
+// const findMethod = movements.find(mov => mov < 0);
+
+// // console.log(accounts);
+
+// const account = accounts.find(acc => acc.owner === 'Jessica Davis');
+
+// console.log(account);
