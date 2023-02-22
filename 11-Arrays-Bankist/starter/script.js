@@ -450,3 +450,23 @@ const eurtoUsd = 1.1;
 // // console.log(accounts);
 
 // const account = accounts.find(acc => acc.owner === 'Jessica Davis');
+
+const arr = [[1, 2, 3], [4, 5, 6], 7, [8]];
+// console.log(arr.flat());
+
+const arrDeep = [[[1, 2], 3], [4, [5, 6]], 7, [8]];
+
+// console.log(arrDeep.flat(2));
+
+const accountsTotal = accounts
+  .map(acc => acc.movements)
+  .flat()
+  .reduce((acc, mov) => acc + mov, 0);
+
+// console.log(accountsTotal);
+
+const accountsTotal2 = accounts
+  .flatMap(acc => acc.movements)
+  .reduce((acc, mov) => acc + mov, 0);
+
+// console.log(accountsTotal2);
